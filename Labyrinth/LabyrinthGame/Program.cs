@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LabyrinthGame
+﻿namespace Labyrinth.Common
 {
     class Program
     {
         static void Main(string[] args)
         {
-            var test = new Labyrinth();
+            var test = new LabyrinthMaze();
             test.PlayGame();
         }
     }

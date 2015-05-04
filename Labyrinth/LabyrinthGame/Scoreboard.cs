@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LabyrinthGame
+﻿namespace Labyrinth.Common
 {
-    class Scoreboard
+    public class Scoreboard
     {
     }
 }

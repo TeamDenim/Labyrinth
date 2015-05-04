@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using Wintellect.PowerCollections;
 
-namespace LabyrinthGame
+namespace Labyrinth.Common
 {
     // tuka polzvame edna biblioteka - PowerCollections - moze da ya namerite v gugal - ima sortiran re4nik, mnogo udobno za klasaciata
-    class Labyrinth
+    class LabyrinthMaze
     {
         private const int sz = 7;
         private const int px = 3;
@@ -24,7 +24,7 @@ namespace LabyrinthGame
         private OrderedMultiDictionary<int, string> scoreBoard;
 
 
-        public Labyrinth()
+        public LabyrinthMaze()
         {
             this.playerPositionX = px;
             this.playerPositionY = py;

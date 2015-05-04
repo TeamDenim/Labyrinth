@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LabyrinthGame
+﻿namespace Labyrinth.Common
 {
-    class Engine
+    using Labyrinth.Common.Contracts;
+
+    public class Engine : IEngine
     {
+        public void Run()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
