@@ -59,25 +59,25 @@
         {
             switch (command)
             {
-                case "A":
+                case "L":
                     {
                         movesCounter++;
                         this.commandExecuter.MoveLeft();
                         break;
                     }
-                case "D":
+                case "R":
                     {
                         movesCounter++;
                         this.commandExecuter.MoveRight();
                         break;
                     }
-                case "W":
+                case "U":
                     {
                         movesCounter++;
                         this.commandExecuter.MoveUp();
                         break;
                     }
-                case "S":
+                case "D":
                     {
                         movesCounter++;
                         this.commandExecuter.MoveDown();
