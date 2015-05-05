@@ -58,7 +58,7 @@
             {
                 for (int col = 0; col < LabyrinthConstants.LABYRINTH_SIZE; col++)
                 {
-                    Console.Write("{0,2}", this.labyrinth[row, col]);
+                    Console.Write("{0,2}", this.player.CurrentLabyrinth[row, col]);
                 }
                 Console.WriteLine();
             }

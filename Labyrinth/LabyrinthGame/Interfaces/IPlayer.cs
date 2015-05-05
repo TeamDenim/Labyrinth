@@ -6,6 +6,6 @@
         bool IsMoveValid(int x, int y);
         int CurrentPlayerPositionX { get; set; }
         int CurrentPlayerPositionY { get; set; }
-        char[,] CurrentLabyrinth { set; }
+        char[,] CurrentLabyrinth { get; set; }
     }
 }

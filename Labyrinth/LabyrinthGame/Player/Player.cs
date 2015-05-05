@@ -35,6 +35,7 @@
 
         public char[,] CurrentLabyrinth
         {
+            get { return this.labyrinth; }
             set
             {
                 this.labyrinth = value;
@@ -53,9 +54,7 @@
 
             if (this.labyrinth[this.currentPlayerPositionY + dirY, this.currentPlayerPositionX + dirX] == LabyrinthConstants.BLOCKED_CELL_CHAR)
             {
-                Console.WriteLine("Invalid Move!");
-                Console.WriteLine("**Press a key to continue**");
-                Console.ReadKey();
+                Console.WriteLine("\n Invalid Move! - Please enter valid move! \n");
                 return;
             }
             else
