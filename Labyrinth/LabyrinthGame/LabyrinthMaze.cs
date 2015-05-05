@@ -7,18 +7,18 @@ namespace Labyrinth.Common
     // tuka polzvame edna biblioteka - PowerCollections - moze da ya namerite v gugal - ima sortiran re4nik, mnogo udobno za klasaciata
     class LabyrinthMaze
     {
-        private const int sz = 7;
-        private const int px = 3;
-        private const int py = 3;
-        private const int MinimumPercentageOfBlockedCells = 30;
-        private const int MaximumPercentageOfBlockedCells = 50;
+        private const int LABYRINTH_SIZE = 7;
+        private const int PLAYER_START_POSITION_X = 3;
+        private const int PLAYER_START_POSITION_Y = 3;
+        private const int MINIMUM_PERCENTAGE_OF_BLOCKED_CELLS = 30;
+        private const int MAXIMUM_PERCENTAGE_OF_BLOCKED_CELLS = 50;
 
-        const char BlockedCell = 'X';
-        const char FreeCell = '-';
-        const char PlayerSign = '*';
+        const char BLOCKED_CELL_CHAR = 'X';
+        const char FREE_CELL_CHAR = '-';
+        const char PLAYER_SIGN_CHAR = '*';
 
-        private int playerPositionX;
-        private int playerPositionY;
+        private int currentPlayerPositionX;
+        private int currentPlayerPositionY;
 
         private char[,] matrix;
         private OrderedMultiDictionary<int, string> scoreBoard;
@@ -26,8 +26,8 @@ namespace Labyrinth.Common
 
         public LabyrinthMaze()
         {
-            this.playerPositionX = px;
-            this.playerPositionY = py;
+            this.currentPlayerPositionX = PLAYER_START_POSITION_X;
+            this.currentPlayerPositionY = PLAYER_START_POSITION_Y;
             this.matrix = this.GenerateMatrix();
             this.scoreBoard = new OrderedMultiDictionary<int, string>(true);
         }
@@ -35,12 +35,12 @@ namespace Labyrinth.Common
         private void Move(int dirX, int dirY)
         {
 
-            if (this.IsMoveValid(this.playerPositionX + dirX, this.playerPositionY + dirY) == false)
+            if (this.IsMoveValid(this.currentPlayerPositionX + dirX, this.currentPlayerPositionY + dirY) == false)
             {
                 return;
             }
 
-            if (this.matrix[playerPositionY + dirY, playerPositionX + dirX] == BlockedCell)
+            if (this.matrix[currentPlayerPositionY + dirY, currentPlayerPositionX + dirX] == BLOCKED_CELL_CHAR)
             {
                 Console.WriteLine("Invalid Move!");
                 Console.WriteLine("**Press a key to continue**");
@@ -49,16 +49,16 @@ namespace Labyrinth.Common
             }
             else
             {
-                this.matrix[this.playerPositionY, this.playerPositionX] = FreeCell;
-                this.matrix[this.playerPositionY + dirY, this.playerPositionX + dirX] = PlayerSign;
-                this.playerPositionY += dirY;
-                this.playerPositionX += dirX;
+                this.matrix[this.currentPlayerPositionY, this.currentPlayerPositionX] = FREE_CELL_CHAR;
+                this.matrix[this.currentPlayerPositionY + dirY, this.currentPlayerPositionX + dirX] = PLAYER_SIGN_CHAR;
+                this.currentPlayerPositionY += dirY;
+                this.currentPlayerPositionX += dirX;
                 return;
             }
         }
         private bool IsMoveValid(int x, int y)
         {
-            if (x < 0 || x > sz - 1 || y < 0 || y > sz - 1)
+            if (x < 0 || x > LABYRINTH_SIZE - 1 || y < 0 || y > LABYRINTH_SIZE - 1)
             {
                 return false;
             }
@@ -67,9 +67,9 @@ namespace Labyrinth.Common
         }
         private void PrintLabirynth()
         {
-            for (int row = 0; row < sz; row++)
+            for (int row = 0; row < LABYRINTH_SIZE; row++)
             {
-                for (int col = 0; col < sz; col++)
+                for (int col = 0; col < LABYRINTH_SIZE; col++)
                 {
                     Console.Write("{0,2}", this.matrix[row, col]);
                 }
@@ -78,27 +78,27 @@ namespace Labyrinth.Common
         }
         private char[,] GenerateMatrix()
         {
-            char[,] generatedMatrix = new char[sz, sz];
+            char[,] generatedMatrix = new char[LABYRINTH_SIZE, LABYRINTH_SIZE];
             Random rand = new Random();
-            int percentageOfBlockedCells = rand.Next(MinimumPercentageOfBlockedCells, MaximumPercentageOfBlockedCells);
+            int percentageOfBlockedCells = rand.Next(MINIMUM_PERCENTAGE_OF_BLOCKED_CELLS, MAXIMUM_PERCENTAGE_OF_BLOCKED_CELLS);
 
-            for (int row = 0; row < sz; row++)
+            for (int row = 0; row < LABYRINTH_SIZE; row++)
             {
-                for (int col = 0; col < sz; col++)
+                for (int col = 0; col < LABYRINTH_SIZE; col++)
                 {
                     int num = rand.Next(0, 100);
                     if (num < percentageOfBlockedCells)
                     {
-                        generatedMatrix[row, col] = BlockedCell;
+                        generatedMatrix[row, col] = BLOCKED_CELL_CHAR;
                     }
                     else
                     {
-                        generatedMatrix[row, col] = FreeCell;
+                        generatedMatrix[row, col] = FREE_CELL_CHAR;
                     }
 
                 }
             }
-            generatedMatrix[playerPositionY, playerPositionX] = PlayerSign;
+            generatedMatrix[currentPlayerPositionY, currentPlayerPositionX] = PLAYER_SIGN_CHAR;
 
             this.MakeAtLeastOneExitReachable(generatedMatrix);
             Console.WriteLine("Welcome to “Labirinth” game. Please try to escape. Use 'top' to view the top");
@@ -108,8 +108,8 @@ namespace Labyrinth.Common
         private void MakeAtLeastOneExitReachable(char[,] generatedMatrix)
         {
             Random rand = new Random();
-            int pathX = px;
-            int pathY = py;
+            int pathX = PLAYER_START_POSITION_X;
+            int pathY = PLAYER_START_POSITION_Y;
             int[] dirX = { 0, 0, 1, -1 };
             int[] dirY = { 1, -1, 0, 0 };
             int numberOfDirections = 4;
@@ -122,8 +122,8 @@ namespace Labyrinth.Common
 
                 for (int d = 0; d < times; d++)
                 {
-                    if (pathX + dirX[num] >= 0 && pathX + dirX[num] < sz && pathY + dirY[num] >= 0 &&
-                        pathY + dirY[num] < sz)
+                    if (pathX + dirX[num] >= 0 && pathX + dirX[num] < LABYRINTH_SIZE && pathY + dirY[num] >= 0 &&
+                        pathY + dirY[num] < LABYRINTH_SIZE)
                     {
 
 
@@ -132,11 +132,11 @@ namespace Labyrinth.Common
 
 
                         pathY += dirY[num];
-                        if (generatedMatrix[pathY, pathX] == PlayerSign)
+                        if (generatedMatrix[pathY, pathX] == PLAYER_SIGN_CHAR)
                         {
                             continue;
                         }
-                        generatedMatrix[pathY, pathX] = FreeCell;
+                        generatedMatrix[pathY, pathX] = FREE_CELL_CHAR;
                     }
                 }
             }
@@ -144,8 +144,8 @@ namespace Labyrinth.Common
 
         private bool IsGameOver(int playerPositionX, int playerPositionY)
         {
-            if ((playerPositionX > 0 && playerPositionX < sz - 1) &&
-                (playerPositionY > 0 && playerPositionY < sz - 1))
+            if ((playerPositionX > 0 && playerPositionX < LABYRINTH_SIZE - 1) &&
+                (playerPositionY > 0 && playerPositionY < LABYRINTH_SIZE - 1))
             {
                 return false;
             }
@@ -205,7 +205,7 @@ namespace Labyrinth.Common
                 PrintLabirynth();
                 string currentLine = string.Empty;
 
-                if (this.IsGameOver(this.playerPositionX, this.playerPositionY))
+                if (this.IsGameOver(this.currentPlayerPositionX, this.currentPlayerPositionY))
                 {
                     Console.WriteLine("Congratulations! You've exited the labirynth in {0} moves.", movesCounter);
 
@@ -262,8 +262,8 @@ namespace Labyrinth.Common
                     }
                 case "RESTART":
                     {
-                        this.playerPositionX = px;
-                        this.playerPositionY = py;
+                        this.currentPlayerPositionX = PLAYER_START_POSITION_X;
+                        this.currentPlayerPositionY = PLAYER_START_POSITION_Y;
                         this.matrix = this.GenerateMatrix();
 
                         break;
