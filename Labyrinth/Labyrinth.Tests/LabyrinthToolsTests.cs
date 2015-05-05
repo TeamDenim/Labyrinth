@@ -1,12 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Labyrinth.Tests
+﻿namespace Labyrinth.Tests
 {
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    [TestClass]
     class LabyrinthToolsTests
     {
+        [TestMethod]
+        public void TestGenerateLabyrinth()
+        {
+
+        }
+
+        [TestMethod]
+        public void TestMakeAtLeastOneExitReachable()
+        {
+
+        }
     }
 }

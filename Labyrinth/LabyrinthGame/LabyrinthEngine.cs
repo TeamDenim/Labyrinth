@@ -5,7 +5,7 @@
     using Labyrinth.Common.LabyrinthTools;
     using System;
 
-    public class LabryrinthEngine : IEngine
+    public class LabyrinthEngine : IEngine
     {
         private IPlayer player;
         private ILabyrinthTools labyrinthTools;
@@ -13,7 +13,7 @@
         private IScoreBoard scoreBoard;
         private CommandExecuter commandExecuter;
 
-        public LabryrinthEngine()
+        public LabyrinthEngine()
         {
             this.labyrinthTools = new LabyrinthTools.LabyrinthTools();
             this.labyrinth = this.labyrinthTools.GenerateLabyrinth();
@@ -99,7 +99,7 @@
                     }
                 default:
                     {
-                        Console.WriteLine(Messages.INVALID_INPUT);
+                        Console.Write(Messages.INVALID_INPUT);
                         break;
                     }
             }

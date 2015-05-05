@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            var test = new LabryrinthEngine();
+            var test = new LabyrinthEngine();
             test.Run();
         }
     }

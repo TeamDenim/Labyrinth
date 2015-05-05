@@ -44,10 +44,7 @@
             }
 
             generatedMatrix[this.player.CurrentPlayerPositionY, this.player.CurrentPlayerPositionX] = LabyrinthConstants.PLAYER_SIGN_CHAR;
-
             this.MakeAtLeastOneExitReachable(generatedMatrix);
-            Console.WriteLine(Messages.WELCOME_MESSAGE);
-            Console.WriteLine(Messages.COMMAND_INFO_MESSAGE);
             return generatedMatrix;
         }
 
@@ -86,6 +83,8 @@
 
         public virtual void PrintLabirynth(IPlayer player)
         {
+            //Console.WriteLine(Messages.WELCOME_MESSAGE);
+            //Console.WriteLine(Messages.COMMAND_INFO_MESSAGE);
             for (int row = 0; row < LabyrinthConstants.LABYRINTH_SIZE; row++)
             {
                 for (int col = 0; col < LabyrinthConstants.LABYRINTH_SIZE; col++)
