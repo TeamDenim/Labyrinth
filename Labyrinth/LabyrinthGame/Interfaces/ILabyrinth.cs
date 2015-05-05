@@ -1,6 +1,9 @@
 ﻿namespace Labyrinth.Common.Interfaces
 {
-    interface ILabyrinth
+    interface ILabyrinthTools
     {
+        char[,] Labyrinth { get; }
+        char[,] GenerateLabyrinth();
+        bool IsGameOver(int playerPositionX, int playerPositionY);
     }
 }

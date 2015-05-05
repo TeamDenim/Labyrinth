@@ -2,13 +2,17 @@
 {
     using Wintellect.PowerCollections;
     using System;
+    using Labyrinth.Common.Interfaces;
 
-    public class Scoreboard
+    public class Scoreboard: IScoreBoard
     {
         private OrderedMultiDictionary<int, string> scoreBoard;
 
-
-        private void UpdateScoreBoard(int currentNumberOfMoves)
+        public Scoreboard()
+        {
+            this.scoreBoard = new OrderedMultiDictionary<int, string>(true);
+        }
+        public virtual void UpdateScoreBoard(int currentNumberOfMoves)
         {
             string userName = string.Empty;
 
@@ -40,7 +44,7 @@
             }
         }
 
-        private int GetWorstScore()
+        public virtual int GetWorstScore()
         {
 
             int worstScore = 0;
@@ -52,7 +56,7 @@
             return worstScore;
         }
 
-        private void PrintScore()
+        public virtual void PrintScore()
         {
             int counter = 1;
 

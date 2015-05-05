@@ -4,8 +4,8 @@
     {
         static void Main(string[] args)
         {
-            var test = new LabyrinthMaze();
-            test.PlayGame();
+            var test = new LabryrinthEngine();
+            test.Run();
         }
     }
 }

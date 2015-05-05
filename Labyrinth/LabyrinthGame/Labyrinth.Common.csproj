@@ -54,14 +54,16 @@
     <Compile Include="Interfaces\ILabyrinth.cs" />
     <Compile Include="Interfaces\IPlayer.cs" />
     <Compile Include="Constants\LabyrinthConstants.cs" />
+    <Compile Include="Interfaces\IScoreBoard.cs" />
     <Compile Include="LabyrinthEngine.cs" />
     <Compile Include="Enums\Direction.cs" />
     <Compile Include="LabyrinthMaze.cs" />
     <Compile Include="Constants\Messages.cs" />
+    <Compile Include="LabyrinthTools\LabyrinthTools.cs" />
     <Compile Include="Player\Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scoreboard.cs" />
+    <Compile Include="ScoreBoard\Scoreboard.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

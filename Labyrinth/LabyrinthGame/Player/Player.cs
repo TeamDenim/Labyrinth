@@ -9,14 +9,14 @@
         private int currentPlayerPositionY;
         private char[,] labyrinth;
 
-        public Player(int startPlayerPositionX, int startPlayerPositionY, char[,] labyrinth)
+        public Player(char[,] labyrinth)
         {
-            this.CurrentPlayerPlayerPositionX = startPlayerPositionX;
-            this.CurrentPlayerPlayerPositionY = this.currentPlayerPositionX;
+            this.CurrentPlayerPositionX = LabyrinthConstants.PLAYER_START_POSITION_X;
+            this.CurrentPlayerPositionY = LabyrinthConstants.PLAYER_START_POSITION_Y;
             this.labyrinth = labyrinth;
         }
 
-        public int CurrentPlayerPlayerPositionX 
+        public int CurrentPlayerPositionX 
         {
             get { return this.currentPlayerPositionX; }
             set
@@ -24,12 +24,20 @@
                 this.currentPlayerPositionX = value;
             } 
         }
-        public int CurrentPlayerPlayerPositionY 
+        public int CurrentPlayerPositionY 
         {
             get { return this.currentPlayerPositionY; }
             set
             {
-                this.CurrentPlayerPlayerPositionY = value;
+                this.currentPlayerPositionY = value;
+            }
+        }
+
+        public char[,] CurrentLabyrinth
+        {
+            set
+            {
+                this.labyrinth = value;
             }
         }
 
@@ -41,7 +49,9 @@
                 return;
             }
 
-            if (this.labyrinth[currentPlayerPositionY + dirY, currentPlayerPositionX + dirX] == LabyrinthConstants.BLOCKED_CELL_CHAR)
+
+
+            if (this.labyrinth[this.currentPlayerPositionY + dirY, this.currentPlayerPositionX + dirX] == LabyrinthConstants.BLOCKED_CELL_CHAR)
             {
                 Console.WriteLine("Invalid Move!");
                 Console.WriteLine("**Press a key to continue**");
