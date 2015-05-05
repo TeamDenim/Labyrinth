@@ -1,5 +1,6 @@
 ﻿namespace Labyrinth.Common
 {
+    using Labyrinth.Common.Commands;
     using Labyrinth.Common.Interfaces;
     using Labyrinth.Common.LabyrinthTools;
     using System;
@@ -10,6 +11,7 @@
         private ILabyrinthTools labyrinthTools;
         private char[,] labyrinth;
         private IScoreBoard scoreBoard;
+        private CommandExecuter commandExecuter;
 
         public LabryrinthEngine()
         {
@@ -17,6 +19,7 @@
             this.labyrinth = this.labyrinthTools.GenerateLabyrinth();
             this.player = new Player(this.labyrinth);
             this.scoreBoard = new Scoreboard();
+            this.commandExecuter = new CommandExecuter(this.player);
         }
 
         public virtual void Run()
@@ -58,33 +61,30 @@
                 case "A":
                     {
                         movesCounter++;
-                        this.player.Move(-1, 0);
+                        this.commandExecuter.MoveLeft();
                         break;
                     }
                 case "D":
                     {
                         movesCounter++;
-                        this.player.Move(1, 0);
+                        this.commandExecuter.MoveRight();
                         break;
                     }
                 case "W":
                     {
                         movesCounter++;
-                        this.player.Move(0, -1);
+                        this.commandExecuter.MoveUp();
                         break;
                     }
                 case "S":
                     {
                         movesCounter++;
-                        this.player.Move(0, 1);
+                        this.commandExecuter.MoveDown();
                         break;
                     }
                 case "RESTART":
                     {
-                        this.player.CurrentPlayerPositionX = LabyrinthConstants.PLAYER_START_POSITION_X;
-                        this.player.CurrentPlayerPositionY = LabyrinthConstants.PLAYER_START_POSITION_Y;
-                        this.player.CurrentLabyrinth = this.labyrinthTools.GenerateLabyrinth();
-
+                        this.commandExecuter.Restart();
                         break;
                     }
                 case "TOP":

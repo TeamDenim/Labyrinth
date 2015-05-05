@@ -12,6 +12,7 @@
         {
             this.scoreBoard = new OrderedMultiDictionary<int, string>(true);
         }
+
         public virtual void UpdateScoreBoard(int currentNumberOfMoves)
         {
             string userName = string.Empty;

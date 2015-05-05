@@ -44,12 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\AbstractCommand.cs" />
-    <Compile Include="Commands\ExitCommand.cs" />
-    <Compile Include="Commands\Factories\CommandFactory.cs" />
-    <Compile Include="Commands\RestartCommand.cs" />
-    <Compile Include="Commands\TopCommand.cs" />
-    <Compile Include="Interfaces\ICommand.cs" />
+    <Compile Include="Commands\CommandExecuter.cs" />
     <Compile Include="Interfaces\IEngine.cs" />
     <Compile Include="Interfaces\ILabyrinth.cs" />
     <Compile Include="Interfaces\IPlayer.cs" />
