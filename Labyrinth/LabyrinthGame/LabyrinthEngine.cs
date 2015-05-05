@@ -19,13 +19,13 @@
             this.scoreBoard = new Scoreboard();
         }
 
-        public void Run()
+        public virtual void Run()
         {
             string command = string.Empty;
             int movesCounter = 0;
             while (command.Equals("EXIT") == false)
             {
-                PrintLabirynth();
+                this.labyrinthTools.PrintLabirynth(this.player);
                 string currentLine = string.Empty;
 
                 if (this.labyrinthTools.IsGameOver(this.player.CurrentPlayerPositionX, this.player.CurrentPlayerPositionY))
@@ -49,18 +49,6 @@
 
                 command = currentLine.ToUpper();
                 this.ExecuteCommand(command, ref movesCounter);
-            }
-        }
-
-        private void PrintLabirynth()
-        {
-            for (int row = 0; row < LabyrinthConstants.LABYRINTH_SIZE; row++)
-            {
-                for (int col = 0; col < LabyrinthConstants.LABYRINTH_SIZE; col++)
-                {
-                    Console.Write("{0,2}", this.player.CurrentLabyrinth[row, col]);
-                }
-                Console.WriteLine();
             }
         }
         private void ExecuteCommand(string command, ref int movesCounter)

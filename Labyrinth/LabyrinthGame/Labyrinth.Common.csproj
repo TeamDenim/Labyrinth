@@ -57,7 +57,7 @@
     <Compile Include="Interfaces\IScoreBoard.cs" />
     <Compile Include="LabyrinthEngine.cs" />
     <Compile Include="Enums\Direction.cs" />
-    <Compile Include="LabyrinthMaze.cs" />
+    <Compile Include="OLDGAME\LabyrinthMaze.cs" />
     <Compile Include="Constants\Messages.cs" />
     <Compile Include="LabyrinthTools\LabyrinthTools.cs" />
     <Compile Include="Player\Player.cs" />

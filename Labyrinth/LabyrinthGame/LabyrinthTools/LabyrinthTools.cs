@@ -82,6 +82,18 @@
             }
         }
 
+        public virtual void PrintLabirynth(IPlayer player)
+        {
+            for (int row = 0; row < LabyrinthConstants.LABYRINTH_SIZE; row++)
+            {
+                for (int col = 0; col < LabyrinthConstants.LABYRINTH_SIZE; col++)
+                {
+                    Console.Write("{0,2}", player.CurrentLabyrinth[row, col]);
+                }
+                Console.WriteLine();
+            }
+        }
+
         public virtual bool IsGameOver(int playerPositionX, int playerPositionY)
         {
             if ((playerPositionX > 0 && playerPositionX < LabyrinthConstants.LABYRINTH_SIZE - 1) &&
