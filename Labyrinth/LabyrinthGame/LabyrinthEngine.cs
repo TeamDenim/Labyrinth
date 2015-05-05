@@ -2,7 +2,8 @@
 {
     using Labyrinth.Common.Commands;
     using Labyrinth.Common.Interfaces;
-    using Labyrinth.Common.LabyrinthTools;
+    using Labyrinth.Common.Constants;
+    using Labyrinth.Common.ScoreBoard;
     using System;
 
     public class LabyrinthEngine : IEngine
@@ -17,7 +18,7 @@
         {
             this.labyrinthTools = new LabyrinthTools.LabyrinthTools();
             this.labyrinth = this.labyrinthTools.GenerateLabyrinth();
-            this.player = new Player(this.labyrinth);
+            this.player = new Player.Player(this.labyrinth);
             this.scoreBoard = new Scoreboard();
             this.commandExecuter = new CommandExecuter(this.player);
         }
@@ -45,12 +46,11 @@
                     Console.Write(Messages.MOVE_INSTRUCTION_MESSAGE);
                     currentLine = Console.ReadLine();
                 }
-                if (currentLine == string.Empty)
-                {
-                    continue;
-                }
 
-                command = currentLine.ToUpper();
+                if (currentLine != null)
+                {
+                    command = currentLine.ToUpper();
+                }
                 this.ExecuteCommand(command, ref movesCounter);
             }
         }

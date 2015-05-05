@@ -3,6 +3,8 @@
     using System;
     using System.IO;
     using Labyrinth.Common;
+    using Labyrinth.Common.Constants;
+    using Labyrinth.Common.ScoreBoard;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]

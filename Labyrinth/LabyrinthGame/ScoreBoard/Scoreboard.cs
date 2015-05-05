@@ -1,13 +1,14 @@
-﻿namespace Labyrinth.Common
+﻿namespace Labyrinth.Common.ScoreBoard
 {
-    using Wintellect.PowerCollections;
     using System;
+    using Labyrinth.Common.Constants;
     using Labyrinth.Common.Interfaces;
+    using Wintellect.PowerCollections;
 
     public class Scoreboard: IScoreBoard
     {
         private const int NUMBER_OF_TOP_SCORES = 5;
-        private OrderedMultiDictionary<int, string> scoreBoard;
+        private readonly OrderedMultiDictionary<int, string> scoreBoard;
 
         public Scoreboard()
         {
@@ -63,11 +64,7 @@
             int counter = 1;
             var output = string.Empty;
 
-            if (this.scoreBoard.Count == 0)
-            {
-                output = string.Format(Messages.SCOREBOARD_EMPTY_MESSAGE);
-            }
-            else
+            if (this.scoreBoard.Count != 0)
             {
                 foreach (var score in this.scoreBoard)
                 {
@@ -81,6 +78,10 @@
 
                     counter++;
                 }
+            }
+            else
+            {
+                output = string.Format(Messages.SCOREBOARD_EMPTY_MESSAGE);
             }
 
             return output;

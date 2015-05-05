@@ -1,7 +1,8 @@
-﻿namespace Labyrinth.Common
+﻿namespace Labyrinth.Common.Player
 {
-    using Labyrinth.Common.Interfaces;
     using System;
+    using Labyrinth.Common.Constants;
+    using Labyrinth.Common.Interfaces;
 
     public class Player : IPlayer
     {
@@ -67,12 +68,8 @@
 
         public virtual bool IsMoveValid(int x, int y)
         {
-            if (x < 0 || x > LabyrinthConstants.LABYRINTH_SIZE - 1 || y < 0 || y > LabyrinthConstants.LABYRINTH_SIZE - 1)
-            {
-                return false;
-            }
-
-            return true;
+            return x >= 0 && x <= LabyrinthConstants.LABYRINTH_SIZE - 1 
+                && y >= 0 && y <= LabyrinthConstants.LABYRINTH_SIZE - 1;
         }
     }
 }

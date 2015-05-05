@@ -1,4 +1,4 @@
-﻿namespace Labyrinth.Common
+﻿namespace Labyrinth.Common.Constants
 {
     public static class LabyrinthConstants
     {

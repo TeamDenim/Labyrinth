@@ -1,4 +1,6 @@
-﻿namespace Labyrinth.Common
+﻿using Labyrinth.Common.Constants;
+
+namespace Labyrinth.Common
 {
     using System;
     using System.Collections.Generic;

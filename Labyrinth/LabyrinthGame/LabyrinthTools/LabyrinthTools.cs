@@ -2,15 +2,19 @@
 {
     using System;
     using Labyrinth.Common.Interfaces;
+    using Labyrinth.Common.Constants;
 
-    public class LabyrinthTools : ILabyrinthTools
+    public sealed class LabyrinthTools : ILabyrinthTools
     {
+        private const int numberOfDirections = 4;
+        private const int maximumTimesToChangeAfter = 2;
+
         private IPlayer player;
         private char[,] labyrinth;
 
         public LabyrinthTools()
         {
-            this.player = new Player(this.labyrinth);
+            this.player = new Player.Player(this.labyrinth);
             this.labyrinth = this.GenerateLabyrinth();
         }
 
@@ -19,7 +23,7 @@
             get { return this.labyrinth; }
         }
 
-        public virtual char[,] GenerateLabyrinth()
+        public char[,] GenerateLabyrinth()
         {
             char[,] generatedMatrix = new char[LabyrinthConstants.LABYRINTH_SIZE, LabyrinthConstants.LABYRINTH_SIZE];
             Random rand = new Random();
@@ -31,6 +35,7 @@
                 for (int col = 0; col < LabyrinthConstants.LABYRINTH_SIZE; col++)
                 {
                     int num = rand.Next(0, 100);
+
                     if (num < percentageOfBlockedCells)
                     {
                         generatedMatrix[row, col] = LabyrinthConstants.BLOCKED_CELL_CHAR;
@@ -55,8 +60,6 @@
             int pathY = LabyrinthConstants.PLAYER_START_POSITION_Y;
             int[] dirX = { 0, 0, 1, -1 };
             int[] dirY = { 1, -1, 0, 0 };
-            int numberOfDirections = 4;
-            int maximumTimesToChangeAfter = 2;
 
             while (this.IsGameOver(pathX, pathY) == false)
             {
@@ -65,23 +68,25 @@
 
                 for (int d = 0; d < times; d++)
                 {
-                    if (pathX + dirX[num] >= 0 && pathX + dirX[num] < LabyrinthConstants.LABYRINTH_SIZE && pathY + dirY[num] >= 0 &&
-                        pathY + dirY[num] < LabyrinthConstants.LABYRINTH_SIZE)
+                    if (pathX + dirX[num] >= 0 
+                        && pathX + dirX[num] < LabyrinthConstants.LABYRINTH_SIZE 
+                        && pathY + dirY[num] >= 0 
+                        && pathY + dirY[num] < LabyrinthConstants.LABYRINTH_SIZE)
                     {
                         pathX += dirX[num];
 
                         pathY += dirY[num];
-                        if (generatedMatrix[pathY, pathX] == LabyrinthConstants.PLAYER_SIGN_CHAR)
+
+                        if (generatedMatrix[pathY, pathX] != LabyrinthConstants.PLAYER_SIGN_CHAR)
                         {
-                            continue;
+                            generatedMatrix[pathY, pathX] = LabyrinthConstants.FREE_CELL_CHAR;
                         }
-                        generatedMatrix[pathY, pathX] = LabyrinthConstants.FREE_CELL_CHAR;
                     }
                 }
             }
         }
 
-        public virtual void PrintLabirynth(IPlayer player)
+        public void PrintLabirynth(IPlayer player)
         {
             //Console.WriteLine(Messages.WELCOME_MESSAGE);
             //Console.WriteLine(Messages.COMMAND_INFO_MESSAGE);
@@ -95,15 +100,10 @@
             }
         }
 
-        public virtual bool IsGameOver(int playerPositionX, int playerPositionY)
+        public bool IsGameOver(int playerPositionX, int playerPositionY)
         {
-            if ((playerPositionX > 0 && playerPositionX < LabyrinthConstants.LABYRINTH_SIZE - 1) &&
-                (playerPositionY > 0 && playerPositionY < LabyrinthConstants.LABYRINTH_SIZE - 1))
-            {
-                return false;
-            }
-
-            return true;
+            return (playerPositionX <= 0 || playerPositionX >= LabyrinthConstants.LABYRINTH_SIZE - 1) 
+                || (playerPositionY <= 0 || playerPositionY >= LabyrinthConstants.LABYRINTH_SIZE - 1);
         }
     }
 }

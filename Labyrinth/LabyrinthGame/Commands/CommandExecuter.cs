@@ -1,4 +1,6 @@
-﻿namespace Labyrinth.Common.Commands
+﻿using Labyrinth.Common.Constants;
+
+namespace Labyrinth.Common.Commands
 {
     using Labyrinth.Common.Interfaces;
     using LabyrinthTools;
