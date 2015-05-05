@@ -4,7 +4,7 @@
     using System.Linq;
     using System.Reflection;
 
-    using Labyrinth.Common.Contracts;
+    using Labyrinth.Common.Interfaces;
 
     public static class CommandFactory
     {

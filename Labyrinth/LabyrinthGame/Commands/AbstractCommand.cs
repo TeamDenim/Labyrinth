@@ -1,7 +1,7 @@
 ﻿namespace Labyrinth.Common.Commands
 {
     using System.Collections.Generic;
-    using Labyrinth.Common.Contracts;
+    using Labyrinth.Common.Interfaces;
 
     public abstract class AbstractCommand : ICommand
     {

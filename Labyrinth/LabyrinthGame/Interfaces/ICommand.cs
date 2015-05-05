@@ -1,4 +1,4 @@
-﻿namespace Labyrinth.Common.Contracts
+﻿namespace Labyrinth.Common.Interfaces
 {
     public interface ICommand
     {
