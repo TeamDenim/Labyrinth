@@ -25,16 +25,16 @@
 
         public char[,] GenerateLabyrinth()
         {
-            char[,] generatedMatrix = new char[LabyrinthConstants.LABYRINTH_SIZE, LabyrinthConstants.LABYRINTH_SIZE];
-            Random rand = new Random();
-            int percentageOfBlockedCells = rand.Next(LabyrinthConstants.MINIMUM_PERCENTAGE_OF_BLOCKED_CELLS,
+            var generatedMatrix = new char[LabyrinthConstants.LABYRINTH_SIZE, LabyrinthConstants.LABYRINTH_SIZE];
+            var rand = new Random();
+            var percentageOfBlockedCells = rand.Next(LabyrinthConstants.MINIMUM_PERCENTAGE_OF_BLOCKED_CELLS,
                 LabyrinthConstants.MAXIMUM_PERCENTAGE_OF_BLOCKED_CELLS);
 
-            for (int row = 0; row < LabyrinthConstants.LABYRINTH_SIZE; row++)
+            for (var row = 0; row < LabyrinthConstants.LABYRINTH_SIZE; row++)
             {
-                for (int col = 0; col < LabyrinthConstants.LABYRINTH_SIZE; col++)
+                for (var col = 0; col < LabyrinthConstants.LABYRINTH_SIZE; col++)
                 {
-                    int num = rand.Next(0, 100);
+                    var num = rand.Next(0, 100);
 
                     if (num < percentageOfBlockedCells)
                     {
@@ -55,18 +55,18 @@
 
         private void MakeAtLeastOneExitReachable(char[,] generatedMatrix)
         {
-            Random rand = new Random();
-            int pathX = LabyrinthConstants.PLAYER_START_POSITION_X;
-            int pathY = LabyrinthConstants.PLAYER_START_POSITION_Y;
+            var rand = new Random();
+            var pathX = LabyrinthConstants.PLAYER_START_POSITION_X;
+            var pathY = LabyrinthConstants.PLAYER_START_POSITION_Y;
             int[] dirX = { 0, 0, 1, -1 };
             int[] dirY = { 1, -1, 0, 0 };
 
             while (this.IsGameOver(pathX, pathY) == false)
             {
-                int num = rand.Next(0, numberOfDirections);
-                int times = rand.Next(0, maximumTimesToChangeAfter);
+                var num = rand.Next(0, numberOfDirections);
+                var times = rand.Next(0, maximumTimesToChangeAfter);
 
-                for (int d = 0; d < times; d++)
+                for (var d = 0; d < times; d++)
                 {
                     if (pathX + dirX[num] >= 0 
                         && pathX + dirX[num] < LabyrinthConstants.LABYRINTH_SIZE 
@@ -90,9 +90,9 @@
         {
             //Console.WriteLine(Messages.WELCOME_MESSAGE);
             //Console.WriteLine(Messages.COMMAND_INFO_MESSAGE);
-            for (int row = 0; row < LabyrinthConstants.LABYRINTH_SIZE; row++)
+            for (var row = 0; row < LabyrinthConstants.LABYRINTH_SIZE; row++)
             {
-                for (int col = 0; col < LabyrinthConstants.LABYRINTH_SIZE; col++)
+                for (var col = 0; col < LabyrinthConstants.LABYRINTH_SIZE; col++)
                 {
                     Console.Write("{0,2}", player.CurrentLabyrinth[row, col]);
                 }

@@ -17,7 +17,7 @@
 
         public virtual void UpdateScoreBoard(int currentNumberOfMoves)
         {
-            string userName = string.Empty;
+            var userName = string.Empty;
 
             if (this.scoreBoard.Count < NUMBER_OF_TOP_SCORES)
             {
@@ -31,7 +31,7 @@
 
         private void UpdatePlayersOnScoreboard(int currentNumberOfMoves, string userName)
         {
-            int worstScore = this.GetWorstScore();
+            var worstScore = this.GetWorstScore();
             if (currentNumberOfMoves <= worstScore)
             {
                 if (this.scoreBoard.ContainsKey(currentNumberOfMoves) == false)
@@ -54,7 +54,7 @@
 
         public virtual int GetWorstScore()
         {
-            int worstScore = 0;
+            var worstScore = 0;
             foreach (var score in this.scoreBoard.Keys)
             {
                 worstScore = score;
@@ -65,7 +65,7 @@
 
         public virtual string PrintScore()
         {
-            int counter = 1;
+            var counter = 1;
             var output = string.Empty;
 
             if (this.scoreBoard.Count != 0)

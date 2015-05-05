@@ -25,12 +25,12 @@
 
         public virtual void Run()
         {
-            string command = string.Empty;
-            int movesCounter = 0;
+            var command = string.Empty;
+            var movesCounter = 0;
             while (command.Equals("EXIT") == false)
             {
                 this.labyrinthTools.PrintLabirynth(this.player);
-                string currentLine = string.Empty;
+                var currentLine = string.Empty;
 
                 if (this.labyrinthTools.IsGameOver(this.player.CurrentPlayerPositionX, this.player.CurrentPlayerPositionY))
                 {

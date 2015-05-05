@@ -60,9 +60,9 @@ namespace Labyrinth.Common
         }
         private void PrintLabirynth()
         {
-            for (int row = 0; row < LabyrinthConstants.LABYRINTH_SIZE; row++)
+            for (var row = 0; row < LabyrinthConstants.LABYRINTH_SIZE; row++)
             {
-                for (int col = 0; col < LabyrinthConstants.LABYRINTH_SIZE; col++)
+                for (var col = 0; col < LabyrinthConstants.LABYRINTH_SIZE; col++)
                 {
                     Console.Write("{0,2}", this.labyrinth[row, col]);
                 }
@@ -71,15 +71,15 @@ namespace Labyrinth.Common
         }
         private char[,] GenerateLabyrinth()
         {
-            char[,] generatedLabyrinth = new char[LabyrinthConstants.LABYRINTH_SIZE, LabyrinthConstants.LABYRINTH_SIZE];
-            Random rand = new Random();
-            int percentageOfBlockedCells = rand.Next(LabyrinthConstants.MINIMUM_PERCENTAGE_OF_BLOCKED_CELLS, LabyrinthConstants.MAXIMUM_PERCENTAGE_OF_BLOCKED_CELLS);
+            var generatedLabyrinth = new char[LabyrinthConstants.LABYRINTH_SIZE, LabyrinthConstants.LABYRINTH_SIZE];
+            var rand = new Random();
+            var percentageOfBlockedCells = rand.Next(LabyrinthConstants.MINIMUM_PERCENTAGE_OF_BLOCKED_CELLS, LabyrinthConstants.MAXIMUM_PERCENTAGE_OF_BLOCKED_CELLS);
 
-            for (int row = 0; row < LabyrinthConstants.LABYRINTH_SIZE; row++)
+            for (var row = 0; row < LabyrinthConstants.LABYRINTH_SIZE; row++)
             {
-                for (int col = 0; col < LabyrinthConstants.LABYRINTH_SIZE; col++)
+                for (var col = 0; col < LabyrinthConstants.LABYRINTH_SIZE; col++)
                 {
-                    int num = rand.Next(0, 100);
+                    var num = rand.Next(0, 100);
                     if (num < percentageOfBlockedCells)
                     {
                         generatedLabyrinth[row, col] = LabyrinthConstants.BLOCKED_CELL_CHAR;
@@ -100,20 +100,20 @@ namespace Labyrinth.Common
         }
         private void MakeAtLeastOneExitReachable(char[,] generatedMatrix)
         {
-            Random rand = new Random();
-            int pathX = LabyrinthConstants.PLAYER_START_POSITION_X;
-            int pathY = LabyrinthConstants.PLAYER_START_POSITION_Y;
+            var rand = new Random();
+            var pathX = LabyrinthConstants.PLAYER_START_POSITION_X;
+            var pathY = LabyrinthConstants.PLAYER_START_POSITION_Y;
             int[] dirX = { 0, 0, 1, -1 };
             int[] dirY = { 1, -1, 0, 0 };
-            int numberOfDirections = 4;
-            int maximumTimesToChangeAfter = 2;
+            var numberOfDirections = 4;
+            var maximumTimesToChangeAfter = 2;
 
             while (this.IsGameOver(pathX, pathY) == false)
             {
-                int num = rand.Next(0, numberOfDirections);
-                int times = rand.Next(0, maximumTimesToChangeAfter);
+                var num = rand.Next(0, numberOfDirections);
+                var times = rand.Next(0, maximumTimesToChangeAfter);
 
-                for (int d = 0; d < times; d++)
+                for (var d = 0; d < times; d++)
                 {
                     if (pathX + dirX[num] >= 0 && pathX + dirX[num] < LabyrinthConstants.LABYRINTH_SIZE && pathY + dirY[num] >= 0 &&
                         pathY + dirY[num] < LabyrinthConstants.LABYRINTH_SIZE)
@@ -150,7 +150,7 @@ namespace Labyrinth.Common
         {
 
 
-            int worstScore = 0;
+            var worstScore = 0;
             foreach (var score in this.scoreBoard.Keys)
             {
                 worstScore = score;
@@ -161,7 +161,7 @@ namespace Labyrinth.Common
 
         private void PrintScore()
         {
-            int counter = 1;
+            var counter = 1;
 
             if (this.scoreBoard.Count == 0)
             {
@@ -191,12 +191,12 @@ namespace Labyrinth.Common
 
         public void PlayGame()
         {
-            string command = string.Empty;
-            int movesCounter = 0;
+            var command = string.Empty;
+            var movesCounter = 0;
             while (command.Equals("EXIT") == false)
             {
                 PrintLabirynth();
-                string currentLine = string.Empty;
+                var currentLine = string.Empty;
 
                 if (this.IsGameOver(this.currentPlayerPositionX, this.currentPlayerPositionY))
                 {
@@ -281,7 +281,7 @@ namespace Labyrinth.Common
         }
         private void UpdateScoreBoard(int currentNumberOfMoves)
         {
-            string userName = string.Empty;
+            var userName = string.Empty;
 
             if (this.scoreBoard.Count < 5)
             {
@@ -294,7 +294,7 @@ namespace Labyrinth.Common
             }
             else
             {
-                int worstScore = this.GetWorstScore();
+                var worstScore = this.GetWorstScore();
                 if (currentNumberOfMoves <= worstScore)
                 {
                     if (this.scoreBoard.ContainsKey(currentNumberOfMoves) == false)
