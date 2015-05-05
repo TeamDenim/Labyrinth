@@ -25,6 +25,7 @@
                 this.currentPlayerPositionX = value;
             } 
         }
+
         public int CurrentPlayerPositionY 
         {
             get { return this.currentPlayerPositionY; }
@@ -42,7 +43,6 @@
                 this.labyrinth = value;
             }
         }
-
 
         public virtual void Move(int dirX, int dirY)
         {
