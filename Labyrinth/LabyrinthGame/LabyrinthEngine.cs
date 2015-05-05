@@ -30,7 +30,7 @@
 
                 if (this.labyrinthTools.IsGameOver(this.player.CurrentPlayerPositionX, this.player.CurrentPlayerPositionY))
                 {
-                    Console.WriteLine("Congratulations! You've exited the labirynth in {0} moves.", movesCounter);
+                    Console.WriteLine(Messages.WIN_MESSAGE, movesCounter);
 
                     this.scoreBoard.UpdateScoreBoard(movesCounter);
                     this.scoreBoard.PrintScore();
@@ -39,7 +39,7 @@
                 }
                 else
                 {
-                    Console.Write("Enter your move (A=left, D-right, W=up, S=down):");
+                    Console.Write(Messages.MOVE_INSTRUCTION_MESSAGE);
                     currentLine = Console.ReadLine();
                 }
                 if (currentLine == string.Empty)
@@ -98,9 +98,7 @@
                     }
                 default:
                     {
-                        Console.WriteLine("Invalid input!");
-                        Console.WriteLine("**Press a key to continue**");
-                        Console.ReadKey();
+                        Console.WriteLine(Messages.INVALID_INPUT);
                         break;
                     }
             }

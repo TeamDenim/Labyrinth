@@ -45,8 +45,8 @@
             generatedMatrix[this.player.CurrentPlayerPositionY, this.player.CurrentPlayerPositionX] = LabyrinthConstants.PLAYER_SIGN_CHAR;
 
             this.MakeAtLeastOneExitReachable(generatedMatrix);
-            Console.WriteLine("Welcome to “Labirinth” game. Please try to escape. Use 'top' to view the top");
-            Console.WriteLine("scoreboard, 'restart' to start a new game and 'exit' to quit the game.");
+            Console.WriteLine(Messages.WELCOME_MESSAGE);
+            Console.WriteLine(Messages.COMMAND_INFO_MESSAGE);
             return generatedMatrix;
         }
         private void MakeAtLeastOneExitReachable(char[,] generatedMatrix)

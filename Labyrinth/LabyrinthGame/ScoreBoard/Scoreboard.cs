@@ -20,7 +20,7 @@
             {
                 while (userName == string.Empty)
                 {
-                    Console.WriteLine("**Please put down your name:**");
+                    Console.WriteLine(Messages.ENTER_NAME_MESSAGE);
                     userName = Console.ReadLine();
                 }
                 this.scoreBoard.Add(currentNumberOfMoves, userName);
@@ -36,7 +36,7 @@
                     }
                     while (userName == string.Empty)
                     {
-                        Console.WriteLine("**Please put down your name:**");
+                        Console.WriteLine(Messages.ENTER_NAME_MESSAGE);
                         userName = Console.ReadLine();
                     }
                     this.scoreBoard.Add(currentNumberOfMoves, userName);
@@ -62,9 +62,7 @@
 
             if (this.scoreBoard.Count == 0)
             {
-                Console.WriteLine("The scoreboard is empty.");
-
-
+                Console.WriteLine(Messages.SCOREBOARD_EMPTY_MESSAGE);
 
             }
             else
@@ -75,7 +73,7 @@
 
                     foreach (var equalScore in foundScore)
                     {
-                        Console.WriteLine("{0}. {1} --> {2}", counter, equalScore, score.Key);
+                        Console.WriteLine(Messages.SCOREBOARD_DISPLAY_FORMAT, counter, equalScore, score.Key);
 
                     }
                     counter++;
