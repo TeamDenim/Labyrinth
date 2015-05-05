@@ -54,9 +54,10 @@
                 this.ExecuteCommand(command, ref movesCounter);
             }
         }
-        private void ExecuteCommand(string command, ref int movesCounter)
+
+        public virtual void ExecuteCommand(string command, ref int movesCounter)
         {
-            switch (command.ToUpper())
+            switch (command)
             {
                 case "A":
                     {

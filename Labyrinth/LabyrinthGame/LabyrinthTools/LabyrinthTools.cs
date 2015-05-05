@@ -14,7 +14,7 @@
             this.labyrinth = this.GenerateLabyrinth();
         }
 
-        public char[,] Labyrinth 
+        public char[,] Labyrinth
         {
             get { return this.labyrinth; }
         }
@@ -42,6 +42,7 @@
 
                 }
             }
+
             generatedMatrix[this.player.CurrentPlayerPositionY, this.player.CurrentPlayerPositionX] = LabyrinthConstants.PLAYER_SIGN_CHAR;
 
             this.MakeAtLeastOneExitReachable(generatedMatrix);
@@ -49,6 +50,7 @@
             Console.WriteLine(Messages.COMMAND_INFO_MESSAGE);
             return generatedMatrix;
         }
+
         private void MakeAtLeastOneExitReachable(char[,] generatedMatrix)
         {
             Random rand = new Random();

@@ -6,6 +6,7 @@
 
     public class Scoreboard: IScoreBoard
     {
+        private const int NUMBER_OF_TOP_SCORES = 5;
         private OrderedMultiDictionary<int, string> scoreBoard;
 
         public Scoreboard()
@@ -17,13 +18,14 @@
         {
             string userName = string.Empty;
 
-            if (this.scoreBoard.Count < 5)
+            if (this.scoreBoard.Count < NUMBER_OF_TOP_SCORES)
             {
                 while (userName == string.Empty)
                 {
                     Console.WriteLine(Messages.ENTER_NAME_MESSAGE);
                     userName = Console.ReadLine();
                 }
+
                 this.scoreBoard.Add(currentNumberOfMoves, userName);
             }
             else
@@ -47,7 +49,6 @@
 
         public virtual int GetWorstScore()
         {
-
             int worstScore = 0;
             foreach (var score in this.scoreBoard.Keys)
             {
@@ -75,12 +76,11 @@
                     foreach (var equalScore in foundScore)
                     {
                         Console.WriteLine(Messages.SCOREBOARD_DISPLAY_FORMAT, counter, equalScore, score.Key);
-
                     }
+
                     counter++;
                 }
             }
-
 
             Console.WriteLine();
         }

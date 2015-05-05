@@ -50,8 +50,6 @@
                 return;
             }
 
-
-
             if (this.labyrinth[this.currentPlayerPositionY + dirY, this.currentPlayerPositionX + dirX] == LabyrinthConstants.BLOCKED_CELL_CHAR)
             {
                 Console.WriteLine(Messages.INVALID_MOVE_MESSAGE);

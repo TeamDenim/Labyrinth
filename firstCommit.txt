@@ -1,2 +1,0 @@
-consoole.log('First Commit');
-console.log('Second commit');
