@@ -21,31 +21,35 @@
 
             if (this.scoreBoard.Count < NUMBER_OF_TOP_SCORES)
             {
-                while (userName == string.Empty)
-                {
-                    Console.WriteLine(Messages.ENTER_NAME_MESSAGE);
-                    userName = Console.ReadLine();
-                }
-
-                this.scoreBoard.Add(currentNumberOfMoves, userName);
+                AddPlayerToScoreboard(currentNumberOfMoves, userName);
             }
             else
             {
-                int worstScore = this.GetWorstScore();
-                if (currentNumberOfMoves <= worstScore)
-                {
-                    if (this.scoreBoard.ContainsKey(currentNumberOfMoves) == false)
-                    {
-                        this.scoreBoard.Remove(worstScore);
-                    }
-                    while (userName == string.Empty)
-                    {
-                        Console.WriteLine(Messages.ENTER_NAME_MESSAGE);
-                        userName = Console.ReadLine();
-                    }
-                    this.scoreBoard.Add(currentNumberOfMoves, userName);
-                }
+                UpdatePlayersOnScoreboard(currentNumberOfMoves, userName);
             }
+        }
+
+        private void UpdatePlayersOnScoreboard(int currentNumberOfMoves, string userName)
+        {
+            int worstScore = this.GetWorstScore();
+            if (currentNumberOfMoves <= worstScore)
+            {
+                if (this.scoreBoard.ContainsKey(currentNumberOfMoves) == false)
+                {
+                    this.scoreBoard.Remove(worstScore);
+                }
+                AddPlayerToScoreboard(currentNumberOfMoves, userName);
+            }
+        }
+
+        private void AddPlayerToScoreboard(int currentNumberOfMoves, string userName)
+        {
+            while (userName == string.Empty)
+            {
+                Console.WriteLine(Messages.ENTER_NAME_MESSAGE);
+                userName = Console.ReadLine();
+            }
+            this.scoreBoard.Add(currentNumberOfMoves, userName);
         }
 
         public virtual int GetWorstScore()
