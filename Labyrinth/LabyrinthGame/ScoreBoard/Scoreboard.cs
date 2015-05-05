@@ -58,14 +58,14 @@
             return worstScore;
         }
 
-        public virtual void PrintScore()
+        public virtual string PrintScore()
         {
             int counter = 1;
+            var output = string.Empty;
 
             if (this.scoreBoard.Count == 0)
             {
-                Console.WriteLine(Messages.SCOREBOARD_EMPTY_MESSAGE);
-
+                output = string.Format(Messages.SCOREBOARD_EMPTY_MESSAGE);
             }
             else
             {
@@ -75,15 +75,15 @@
 
                     foreach (var equalScore in foundScore)
                     {
-                        Console.WriteLine(Messages.SCOREBOARD_DISPLAY_FORMAT, counter, equalScore, score.Key);
+                        output = string.Format(Messages.SCOREBOARD_DISPLAY_FORMAT, counter, equalScore, score.Key);
+                        Console.WriteLine(output);
                     }
 
                     counter++;
                 }
             }
 
-            Console.WriteLine();
+            return output;
         }
-
     }
 }

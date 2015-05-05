@@ -4,6 +4,6 @@
     {
         void UpdateScoreBoard(int currentNumberOfMoves);
         int GetWorstScore();
-        void PrintScore();
+        string PrintScore();
     }
 }
