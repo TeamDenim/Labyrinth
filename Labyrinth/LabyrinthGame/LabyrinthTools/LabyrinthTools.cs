@@ -4,6 +4,9 @@
     using Labyrinth.Common.Interfaces;
     using Labyrinth.Common.Constants;
 
+    /// <summary>
+    /// 
+    /// </summary>
     public sealed class LabyrinthTools : ILabyrinthTools
     {
         private const int numberOfDirections = 4;

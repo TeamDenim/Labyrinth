@@ -46,7 +46,7 @@
   <ItemGroup>
     <Compile Include="Commands\CommandExecuter.cs" />
     <Compile Include="Interfaces\IEngine.cs" />
-    <Compile Include="Interfaces\ILabyrinth.cs" />
+    <Compile Include="Interfaces\ILabyrinthTools.cs" />
     <Compile Include="Interfaces\IPlayer.cs" />
     <Compile Include="Constants\LabyrinthConstants.cs" />
     <Compile Include="Interfaces\IScoreBoard.cs" />

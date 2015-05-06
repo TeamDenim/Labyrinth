@@ -1,12 +1,16 @@
-﻿using Labyrinth.Common.Constants;
-
-namespace Labyrinth.Common.Commands
+﻿namespace Labyrinth.Common.Commands
 {
+    using Labyrinth.Common.Constants;
     using Labyrinth.Common.Interfaces;
     using LabyrinthTools;
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class CommandExecuter
     {
+        // TODO: Add XML documentation.
+
         private IPlayer player;
         private ILabyrinthTools labyrinthTools;
 
@@ -42,6 +46,5 @@ namespace Labyrinth.Common.Commands
             this.player.CurrentPlayerPositionY = LabyrinthConstants.PLAYER_START_POSITION_Y;
             this.player.CurrentLabyrinth = this.labyrinthTools.GenerateLabyrinth();
         }
-
     }
 }

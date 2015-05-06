@@ -6,14 +6,41 @@
     using Labyrinth.Common.ScoreBoard;
     using System;
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class LabyrinthEngine : IEngine
     {
+        // TODO: Add XML documentation.
+
+        /// <summary>
+        /// 
+        /// </summary>
         private IPlayer player;
+
+        /// <summary>
+        /// 
+        /// </summary>
         private ILabyrinthTools labyrinthTools;
+
+        /// <summary>
+        /// 
+        /// </summary>
         private char[,] labyrinth;
-        private IScoreBoard scoreBoard;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private IScoreboard scoreBoard;
+
+        /// <summary>
+        /// 
+        /// </summary>
         private CommandExecuter commandExecuter;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public LabyrinthEngine()
         {
             this.labyrinthTools = new LabyrinthTools.LabyrinthTools();
@@ -23,6 +50,9 @@
             this.commandExecuter = new CommandExecuter(this.player);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public virtual void Run()
         {
             var command = string.Empty;
@@ -55,6 +85,11 @@
             }
         }
 
+        /// <summary>
+        /// Executes input commands from the console.
+        /// </summary>
+        /// <param name="command"></param>
+        /// <param name="movesCounter"></param>
         public virtual void ExecuteCommand(string command, ref int movesCounter)
         {
             switch (command)
