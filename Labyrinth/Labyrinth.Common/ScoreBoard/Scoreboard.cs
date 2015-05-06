@@ -30,6 +30,11 @@
             this.scoreBoard = new OrderedMultiDictionary<int, string>(true);
         }
 
+        public OrderedMultiDictionary<int, string> ScoreBoard 
+        {
+            get { return this.scoreBoard; }
+        }
+
         /// <summary>
         /// Fills and updates the scoreboard.
         /// </summary>
