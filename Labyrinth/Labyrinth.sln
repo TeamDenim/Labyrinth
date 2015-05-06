@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Labyrinth.Common", "LabyrinthGame\Labyrinth.Common.csproj", "{11261713-E1D2-4554-9337-7F806DF4074C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Labyrinth.Common", "Labyrinth.Common\Labyrinth.Common.csproj", "{11261713-E1D2-4554-9337-7F806DF4074C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Labyrinth.Tests", "Labyrinth.Tests\Labyrinth.Tests.csproj", "{8EAB1685-9F7A-498F-AFF1-B028B98C7EC0}"
 EndProject
