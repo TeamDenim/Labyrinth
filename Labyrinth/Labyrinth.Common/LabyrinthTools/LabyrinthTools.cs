@@ -24,7 +24,7 @@
             get { return this.labyrinth; }
         }
 
-        public char[,] GenerateLabyrinth()
+        public virtual char[,] GenerateLabyrinth()
         {
             var generatedMatrix = new char[LabyrinthConstants.LABYRINTH_SIZE, LabyrinthConstants.LABYRINTH_SIZE];
             var rand = new Random();
@@ -87,7 +87,7 @@
             }
         }
 
-        public void PrintLabirynth(IPlayer player)
+        public virtual void PrintLabirynth(IPlayer player)
         {
             //Console.WriteLine(Messages.WELCOME_MESSAGE);
             //Console.WriteLine(Messages.COMMAND_INFO_MESSAGE);
