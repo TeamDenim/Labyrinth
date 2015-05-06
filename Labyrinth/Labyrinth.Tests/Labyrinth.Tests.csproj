@@ -55,7 +55,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LabyrinthGame\Labyrinth.Common.csproj">
+    <ProjectReference Include="..\Labyrinth.Common\Labyrinth.Common.csproj">
       <Project>{11261713-e1d2-4554-9337-7f806df4074c}</Project>
       <Name>Labyrinth.Common</Name>
     </ProjectReference>

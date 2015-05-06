@@ -12,12 +12,10 @@
         private const int numberOfDirections = 4;
         private const int maximumTimesToChangeAfter = 2;
 
-        private IPlayer player;
         private char[,] labyrinth;
 
         public LabyrinthTools()
         {
-            this.player = new Player.Player(this.labyrinth);
             this.labyrinth = this.GenerateLabyrinth();
         }
 
@@ -51,7 +49,7 @@
                 }
             }
 
-            generatedMatrix[this.player.CurrentPlayerPositionY, this.player.CurrentPlayerPositionX] = LabyrinthConstants.PLAYER_SIGN_CHAR;
+            generatedMatrix[LabyrinthConstants.PLAYER_START_POSITION_X, LabyrinthConstants.PLAYER_START_POSITION_Y] = LabyrinthConstants.PLAYER_SIGN_CHAR;
             this.MakeAtLeastOneExitReachable(generatedMatrix);
             return generatedMatrix;
         }
