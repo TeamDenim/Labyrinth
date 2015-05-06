@@ -15,7 +15,7 @@
         /// Gets the worst score from the current game only.
         /// </summary>
         /// <returns>Worst score.</returns>
-        int GetWorstScore();
+        int GetLastScore();
 
         /// <summary>
         /// Returns a string of formatted highScores.

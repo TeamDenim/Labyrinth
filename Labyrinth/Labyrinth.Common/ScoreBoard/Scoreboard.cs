@@ -55,12 +55,12 @@
         /// <param name="userName" type="string">Takes the name of the current player.</param>
         private void UpdatePlayersOnScoreboard(int currentNumberOfMoves, string userName)
         {
-            var worstScore = this.GetWorstScore();
-            if (currentNumberOfMoves <= worstScore)
+            var lastScore = this.GetLastScore();
+            if (currentNumberOfMoves <= lastScore)
             {
                 if (this.scoreBoard.ContainsKey(currentNumberOfMoves) == false)
                 {
-                    this.scoreBoard.Remove(worstScore);
+                    this.scoreBoard.Remove(lastScore);
                 }
                 AddPlayerToScoreboard(currentNumberOfMoves, userName);
             }
@@ -82,10 +82,10 @@
         }
 
         /// <summary>
-        /// Gets the worst score from the current game only.
+        /// Gets the last score from the current game only.
         /// </summary>
         /// <returns>Worst score.</returns>
-        public virtual int GetWorstScore()
+        public virtual int GetLastScore()
         {
             return this.scoreBoard.Keys.ElementAt(this.scoreBoard.Count - 1);
         }
