@@ -4,6 +4,7 @@
     using Labyrinth.Common.Constants;
     using Labyrinth.Common.Interfaces;
     using Wintellect.PowerCollections;
+    using System.Linq;
 
     /// <summary>
     /// Scoreboard class inherits IScoreboard.
@@ -86,13 +87,7 @@
         /// <returns>Worst score.</returns>
         public virtual int GetWorstScore()
         {
-            var worstScore = 0;
-            foreach (var score in this.scoreBoard.Keys)
-            {
-                worstScore = score;
-            }
-
-            return worstScore;
+            return this.scoreBoard.Keys.ElementAt(this.scoreBoard.Count - 1);
         }
 
         /// <summary>
