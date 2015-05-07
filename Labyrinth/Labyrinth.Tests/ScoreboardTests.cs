@@ -11,13 +11,15 @@
     public class ScoreboardTests
     {
         [TestMethod]
-        public void TestUpdateScoreBoard()
+        public void UpdateScoreBoardTest()
         {
             Scoreboard scoreBoard = new Scoreboard();
+
             scoreBoard.UpdateScoreBoard(15);
             scoreBoard.UpdateScoreBoard(13);
             scoreBoard.UpdateScoreBoard(10);
             scoreBoard.UpdateScoreBoard(20);
+
             Assert.AreEqual(4, scoreBoard.ScoreBoard.Count, "The count must be 4!");
         }
     }

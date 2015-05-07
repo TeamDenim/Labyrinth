@@ -5,6 +5,10 @@
     [TestClass]
     class CommandExecuterTests
     {
-        
+        [TestMethod]
+        public void TestRestart()
+        {
+
+        }
     }
 }

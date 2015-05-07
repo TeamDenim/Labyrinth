@@ -11,7 +11,7 @@
     public class LabyrinthEngineTests
     {
         [TestMethod]
-        public void InvalidCommandExecutionTest()
+        public void TestInvalidCommandExecution()
         {
             using (var stringWriter = new StringWriter())
             {
@@ -28,17 +28,14 @@
         }
 
         [TestMethod]
-        public void TopScoreCommandExecutionTest()
+        public void TestTopScoreCommandExecution()
         {
             using (var stringWriter = new StringWriter())
             {
                 var counter = 0;
-
                 Console.SetOut(stringWriter);
-
                 var scoreBoard = new Scoreboard();
                 var interpreter = new LabyrinthEngine();
-
                 interpreter.ExecuteCommand("TOP", ref counter);
                 var expected = Messages.SCOREBOARD_EMPTY_MESSAGE;
                 var actual = scoreBoard.PrintScore();
@@ -48,17 +45,14 @@
         }
 
         [TestMethod]
-        public void ExitCommandExecutionTest()
+        public void TestExitCommandExecution()
         {
             using (var stringWriter = new StringWriter())
             {
                 var counter = 0;
-
                 Console.SetOut(stringWriter);
-
                 var scoreBoard = new Scoreboard();
                 var interpreter = new LabyrinthEngine();
-
                 interpreter.ExecuteCommand("EXIT", ref counter);
                 var expected = "";
 

@@ -45,6 +45,7 @@
                     {
                         generatedMatrix[row, col] = LabyrinthConstants.FREE_CELL_CHAR;
                     }
+
                 }
             }
 
@@ -53,7 +54,7 @@
             return generatedMatrix;
         }
 
-        public void MakeAtLeastOneExitReachable(char[,] generatedMatrix)
+        private void MakeAtLeastOneExitReachable(char[,] generatedMatrix)
         {
             var rand = new Random();
             var pathX = LabyrinthConstants.PLAYER_START_POSITION_X;
@@ -88,22 +89,21 @@
 
         public void PrintLabirynth(IPlayer player)
         {
-            Console.WriteLine(Messages.WELCOME_MESSAGE);
-            Console.WriteLine(Messages.COMMAND_INFO_MESSAGE);
+            //Console.WriteLine(Messages.WELCOME_MESSAGE);
+            //Console.WriteLine(Messages.COMMAND_INFO_MESSAGE);
             for (var row = 0; row < LabyrinthConstants.LABYRINTH_SIZE; row++)
             {
                 for (var col = 0; col < LabyrinthConstants.LABYRINTH_SIZE; col++)
                 {
                     Console.Write("{0,2}", player.CurrentLabyrinth[row, col]);
                 }
-
                 Console.WriteLine();
             }
         }
 
         public bool IsGameOver(int playerPositionX, int playerPositionY)
         {
-            return (playerPositionX <= 0 || playerPositionX >= LabyrinthConstants.LABYRINTH_SIZE - 1)
+            return (playerPositionX <= 0 || playerPositionX >= LabyrinthConstants.LABYRINTH_SIZE - 1) 
                 || (playerPositionY <= 0 || playerPositionY >= LabyrinthConstants.LABYRINTH_SIZE - 1);
         }
     }
