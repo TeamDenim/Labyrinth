@@ -66,10 +66,17 @@
 
             while (this.IsGameOver(pathX, pathY) == false)
             {
+                var randomNumber = randomNumberGenerator.Next(0, numberOfDirections);
                 var times = randomNumberGenerator.Next(0, maximumTimesToChangeAfter);
 
+                if (pathX + dirX[randomNumber] >= 0 
+                    && pathX + dirX[randomNumber] < LabyrinthConstants.LABYRINTH_SIZE 
+                    && pathY + dirY[randomNumber] >= 0 
+                    && pathY + dirY[randomNumber] < LabyrinthConstants.LABYRINTH_SIZE)
                 {
+                    pathX += dirX[randomNumber];
 
+                    pathY += dirY[randomNumber];
 
                     if (generatedMatrix[pathY, pathX] != LabyrinthConstants.PLAYER_SIGN_CHAR)
                     {
