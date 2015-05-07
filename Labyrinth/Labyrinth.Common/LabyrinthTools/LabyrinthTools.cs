@@ -27,17 +27,17 @@
         public char[,] GenerateLabyrinth()
         {
             var generatedMatrix = new char[LabyrinthConstants.LABYRINTH_SIZE, LabyrinthConstants.LABYRINTH_SIZE];
-            var rand = new Random();
-            var percentageOfBlockedCells = rand.Next(LabyrinthConstants.MINIMUM_PERCENTAGE_OF_BLOCKED_CELLS,
+            var randomNumberGenerator = new Random();
+            var percentageOfBlockedCells = randomNumberGenerator.Next(LabyrinthConstants.MINIMUM_PERCENTAGE_OF_BLOCKED_CELLS,
                 LabyrinthConstants.MAXIMUM_PERCENTAGE_OF_BLOCKED_CELLS);
 
             for (var row = 0; row < LabyrinthConstants.LABYRINTH_SIZE; row++)
             {
                 for (var col = 0; col < LabyrinthConstants.LABYRINTH_SIZE; col++)
                 {
-                    var num = rand.Next(0, 100);
+                    var randomNumber = randomNumberGenerator.Next(0, 100); // for cheking whether the cell will be blocked or free
 
-                    if (num < percentageOfBlockedCells)
+                    if (randomNumber < percentageOfBlockedCells)
                     {
                         generatedMatrix[row, col] = LabyrinthConstants.BLOCKED_CELL_CHAR;
                     }
@@ -49,14 +49,16 @@
                 }
             }
 
-            generatedMatrix[LabyrinthConstants.PLAYER_START_POSITION_X, LabyrinthConstants.PLAYER_START_POSITION_Y] = LabyrinthConstants.PLAYER_SIGN_CHAR;
+            generatedMatrix[LabyrinthConstants.PLAYER_START_POSITION_X, LabyrinthConstants.PLAYER_START_POSITION_Y] 
+                = LabyrinthConstants.PLAYER_SIGN_CHAR;
+
             this.MakeAtLeastOneExitReachable(generatedMatrix);
             return generatedMatrix;
         }
 
         private void MakeAtLeastOneExitReachable(char[,] generatedMatrix)
         {
-            var rand = new Random();
+            var randomNumberGenerator = new Random();
             var pathX = LabyrinthConstants.PLAYER_START_POSITION_X;
             var pathY = LabyrinthConstants.PLAYER_START_POSITION_Y;
             int[] dirX = { 0, 0, 1, -1 };
@@ -64,26 +66,17 @@
 
             while (this.IsGameOver(pathX, pathY) == false)
             {
-                var num = rand.Next(0, numberOfDirections);
-                var times = rand.Next(0, maximumTimesToChangeAfter);
+                var times = randomNumberGenerator.Next(0, maximumTimesToChangeAfter);
 
-                for (var d = 0; d < times; d++)
                 {
-                    if (pathX + dirX[num] >= 0 
-                        && pathX + dirX[num] < LabyrinthConstants.LABYRINTH_SIZE 
-                        && pathY + dirY[num] >= 0 
-                        && pathY + dirY[num] < LabyrinthConstants.LABYRINTH_SIZE)
+
+
+                    if (generatedMatrix[pathY, pathX] != LabyrinthConstants.PLAYER_SIGN_CHAR)
                     {
-                        pathX += dirX[num];
-
-                        pathY += dirY[num];
-
-                        if (generatedMatrix[pathY, pathX] != LabyrinthConstants.PLAYER_SIGN_CHAR)
-                        {
-                            generatedMatrix[pathY, pathX] = LabyrinthConstants.FREE_CELL_CHAR;
-                        }
+                        generatedMatrix[pathY, pathX] = LabyrinthConstants.FREE_CELL_CHAR;
                     }
                 }
+                
             }
         }
 
