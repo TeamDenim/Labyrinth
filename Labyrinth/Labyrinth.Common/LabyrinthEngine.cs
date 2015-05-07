@@ -7,12 +7,10 @@
     using System;
 
     /// <summary>
-    /// 
+    /// Creates labyrinth
     /// </summary>
     public class LabyrinthEngine : IEngine
     {
-        // TODO: Add XML documentation.
-
         /// <summary>
         /// 
         /// </summary>
@@ -39,7 +37,7 @@
         private CommandExecuter commandExecuter;
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the <see cref="LabyrinthEngine"/> class.
         /// </summary>
         public LabyrinthEngine()
         {
@@ -51,7 +49,7 @@
         }
 
         /// <summary>
-        /// 
+        /// Runs game loop.
         /// </summary>
         public virtual void Run()
         {
@@ -88,8 +86,8 @@
         /// <summary>
         /// Executes input commands from the console.
         /// </summary>
-        /// <param name="command"></param>
-        /// <param name="movesCounter"></param>
+        /// <param name="command">User input</param>
+        /// <param name="movesCounter">Player moves</param>
         public virtual void ExecuteCommand(string command, ref int movesCounter)
         {
             switch (command)

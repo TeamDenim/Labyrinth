@@ -9,8 +9,6 @@
     /// </summary>
     public class Player : IPlayer
     {
-        // TODO: Should the player take the labyrinth as a param?
-
         /// <summary>
         /// The current position of the player along the horizontal axis.
         /// </summary>
